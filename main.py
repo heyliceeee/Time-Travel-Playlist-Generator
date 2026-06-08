@@ -53,6 +53,19 @@ def create_playlist():
     """
     playlist = sp.current_user_playlist_create(name=f"Top Songs for {original_date}", public=False, description="Automatically generated playlist")
     return playlist["id"]
+def search_songs():
+    """
+    search songs in spotify
+    """
+    year_date = saturday_date.strftime("%Y")  # Extract the year from the Saturday date
+    song_uris = []
+    for song in song_names:  # for each song in the list of song names
+        results = sp.search(q=f"track:{song} year:{year_date}", type="track")  # Search for the song in Spotify
+
+        if results["tracks"]["total"] > 0:  # If the song is found in Spotify
+            song_uri = results["tracks"]["items"][0]["uri"]  # Get the URI of the first matching track
+            song_uris.append(song_uri)  # Add the URI to the list of song URIs
+    print(f"Song URIs: {song_uris}")
 
 while True:
     date_str = input("Which year do you want to travel to? (YYYY-MM-DD): ")
@@ -63,12 +76,13 @@ while True:
         saturday_str = saturday_date.strftime("%Y-%m-%d") # Convert the Saturday date to a string in the format YYYY-MM-DD
 
         songs = get_top_songs(saturday_str) # Call the function to get the top songs for the given date
-        print(songs.text)
         soup = BeautifulSoup(songs.text, "html.parser") # Parse the HTML response
         song_names = [tag.getText().strip() for tag in soup.select("h3.chart-entry__title")] # Extract song names from the HTML
-        #print(f"100 Top songs for {saturday_str}: \n{'\n'.join(song_names)}")
-        playlist_id = create_playlist()
-        print(f"Playlist created: {playlist_id}")
+
+        search_songs() # search songs in spotify
+
+        #playlist_id = create_playlist()
+        #print(f"Playlist created: {playlist_id}")
         break
 
     print("Invalid date. Please enter a valid date in the format YYYY-MM-DD.")
