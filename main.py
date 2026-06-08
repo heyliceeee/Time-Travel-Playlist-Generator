@@ -3,6 +3,8 @@ import os
 from dotenv import load_dotenv
 import requests
 from bs4 import BeautifulSoup
+import spotipy
+from spotipy.oauth2 import SpotifyOAuth
 
 load_dotenv()
 
@@ -10,6 +12,20 @@ BAKEBOARD_URL = os.getenv("BAKEBOARD_URL")
 HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"}
 MIN_DATE = datetime.datetime(2020, 8, 9) # Set the minimum date to August 9, 2020
 MAX_DATE = datetime.datetime(2026, 4, 18) # Set the minimum date to April 18, 2026
+
+sp = spotipy.Spotify(
+    auth_manager=SpotifyOAuth(
+        scope="playlist-modify-private",
+        redirect_uri="http://127.0.0.1:4202",
+        client_id=os.getenv("SPOTIFY_CLIENT_ID"),
+        client_secret=os.getenv("SPOTIFY_CLIENT_SECRET"),
+        show_dialog=True,
+        cache_path="token.txt",
+        username=os.getenv("SPOTIPY_USERNAME"),
+    )
+) # Create a Spotify object
+
+user_id = sp.current_user()["id"] # Get the ID of the current user
 
 def is_valid_date(date_str, date_format="%Y-%m-%d"):
     """
