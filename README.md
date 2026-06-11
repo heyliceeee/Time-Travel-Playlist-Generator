@@ -1,42 +1,42 @@
 # 🎧 Time Travel Playlist Generator
 
-Este projeto cria automaticamente uma playlist no Spotify baseada nas músicas que estavam no billboard numa data específica escolhida pelo utilizador. Após introduzir uma data, o sistema identifica o sábado correspondente, recolhe as músicas mais populares dessa semana e adiciona-as a uma playlist privada no Spotify.
+This project automatically creates a Spotify playlist based on the songs that were on the Billboard charts on a specific date chosen by the user. After entering a date, the system identifies the corresponding Saturday, retrieves the most popular songs from that week, and adds them to a private Spotify playlist.
 
-Se a playlist para essa data já existir, é reutilizada em vez de ser criada uma nova, garantindo organização e evitando duplicados.
-
----
-
-## ✨ Funcionalidades
-
-- Validação da data introduzida pelo utilizador.
-- Cálculo automático do sábado correspondente.
-- Recolha das músicas mais populares dessa semana através do Billboard.
-- Pesquisa das faixas no Spotify com base no título e ano.
-- Criação automática de uma playlist privada com o nome da data selecionada.
-- Reutilização da playlist caso já exista.
-- Adição de todas as músicas encontradas diretamente na playlist.
+If a playlist for that date already exists, it is reused instead of creating a new one, ensuring organization and avoiding duplicates.
 
 ---
 
-## 🎯 Objetivo
+## ✨ Features
 
-Proporcionar uma forma simples e automática de revisitar musicalmente qualquer semana entre 2020 e 2026, criando playlists personalizadas que refletem os maiores sucessos da época.
-
----
-
-## 📌 Fluxo do Processo
-
-1. O utilizador escolhe uma data.
-2. O sistema valida a data e determina o sábado correspondente.
-3. As músicas dessa semana são recolhidas do Billboard.
-4. Cada música é pesquisada no Spotify.
-5. A playlist correspondente é criada ou reutilizada.
-6. As músicas encontradas são adicionadas automaticamente.
+- Validation of the date entered by the user  
+- Automatic calculation of the corresponding Saturday  
+- Retrieval of the week’s most popular songs from Billboard  
+- Search for tracks on Spotify based on title and year  
+- Automatic creation of a private playlist named after the selected date  
+- Reuse of the playlist if it already exists  
+- Addition of all found songs directly into the playlist  
 
 ---
 
-## 📚 Notas
+## 🎯 Purpose
 
-- Apenas músicas encontradas no Spotify são adicionadas.
-- A playlist é sempre privada.
-- O nome da playlist segue o formato: **Top Songs for YYYY-MM-DD**.
+Provide a simple and automated way to musically revisit any week between 2020 and 2026, creating personalized playlists that reflect the biggest hits of the time.
+
+---
+
+## 📌 Process Flow
+
+1. The user selects a date  
+2. The system validates the date and determines the corresponding Saturday  
+3. The songs from that week are retrieved from Billboard  
+4. Each song is searched on Spotify  
+5. The corresponding playlist is created or reused  
+6. All found songs are automatically added  
+
+---
+
+## 📚 Notes
+
+- Only songs found on Spotify are added  
+- The playlist is always private  
+- The playlist name follows the format: **Top Songs for YYYY-MM-DD**  
